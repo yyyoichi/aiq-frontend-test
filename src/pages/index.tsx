@@ -105,6 +105,7 @@ export default function Home() {
     for (const rlt of json['result']['data']) {
       if (rlt['label'] === '総人口') {
         data = rlt['data'];
+        break;
       }
     }
     // 返却型
