@@ -2,6 +2,8 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import fetcher from 'src/lib/fetcher';
 import styles from '../styles/Home.module.css';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 type Pref = {
   prefCode: number;
   prefName: string;
