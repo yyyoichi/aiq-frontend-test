@@ -1,8 +1,24 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 0;
 }
 
-@media (max-width: 600px) {
-  .container {
-  }
+
+.title {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
+  font-size: 20px;
+  background-color: #c2c2c2;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding: 0 20px;
+}
+
+.inputWrapper label {
+  padding: 4px 2px;
 }

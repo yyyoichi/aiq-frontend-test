@@ -157,12 +157,12 @@ export default function Home() {
         <title>AIQ codeing test</title>
         <meta
           name='description'
-          content='都道府県別の総人口推移グラフを表示するSPA(Single Page Application)を構築せよ'
+          content='都道府県別総人口推移グラフを表示するSPA(Single Page Application)を構築せよ'
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <h1>都道府県別の総人口推移グラフを表示するSPA(Single Page Application)を構築せよ</h1>
-      <div>
+      <h1 className={styles.title}>都道府県別の総人口推移</h1>
+      <div className={styles.inputWrapper}>
         {
           // 2．APIレスポンスから都道府県一覧のチェックボックスを動的に生成する
           pref.map((x, i) => {
