@@ -58,8 +58,12 @@ export default function Home() {
         };
       }),
     ).then((res) => {
-      if (isChenged || res.length === 0) {
+      if (isChenged) {
+        // すでにcheck変更済みのためスキップ
         return;
+      }
+      if (res.length === 0) {
+        return setDataset({ xAxisCtg: [], series: [] });
       }
       // 横軸ラベル
       const xAxisCtg = res[0]['res']['year'].map((x) => String(x));
