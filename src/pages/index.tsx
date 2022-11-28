@@ -20,6 +20,7 @@ type JSONPopCmp = {
 };
 export default function Home() {
   const [pref, setPref] = useState<Pref[]>([]);
+  const [checkedPref, setCheckedPref] = useState<Pref[]>([]);
   useEffect(() => {
     // 1．RESAS(地域経済分析システム) APIの「都道府県一覧」APIから取得する
     const url = 'https://opendata.resas-portal.go.jp/api/v1/prefectures';
@@ -27,6 +28,27 @@ export default function Home() {
       .then((res) => setPref(res.result))
       .catch((e) => console.error(e));
   }, []);
+  useEffect(() => {
+    // checkedPrefが変更されたら、RESAS APIから選択された都道府県の「人口構成」を取得する
+    console.log(checkedPref);
+  }, [checkedPref]);
+  const getPopCompo = async (code: string) => {};
+  /**
+   * チェックされた都道府県をcheckedPrefに追加・削除する
+   * @param p クリックされた都道府県
+   * @param isChecked
+   */
+  const handleChecked = (p: Pref, isChecked: boolean) => {
+    if (isChecked) {
+      setCheckedPref((cp) => {
+        return [...cp, p];
+      });
+    } else {
+      setCheckedPref((cp) => {
+        return cp.filter((x) => x.prefCode !== p.prefCode);
+      });
+    }
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -44,7 +66,11 @@ export default function Home() {
           pref.map((x, i) => {
             return (
               <label key={i}>
-                <input type='checkbox' value={x.prefCode} />
+                <input
+                  type='checkbox'
+                  value={x.prefCode}
+                  onChange={(e) => handleChecked(x, e.target.checked)}
+                />
                 {x.prefName}
               </label>
             );
