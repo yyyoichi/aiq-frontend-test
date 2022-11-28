@@ -4,28 +4,22 @@ import fetcher from 'src/lib/fetcher';
 import styles from '../styles/Home.module.css';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-type Pref = {
-  prefCode: number;
-  prefName: string;
-};
+
+/**
+ * 都道府県レスポンスの型
+ */
 type JSONPref = {
   message: string | null;
   result: Pref[];
 };
-type PopCmpGraph = {
-  //横軸ラベル
-  xAxisCtg: number[];
-  series: PopulationCompo[];
+type Pref = {
+  prefCode: number;
+  prefName: string;
 };
+
 /**
- * @type {{name}} 都道府県名
- * @type {{data}} 総人口
+ * 人口構成レスポンスの型
  */
-type PopulationCompo = { name: string; data: number[] };
-type PopCmpData = {
-  year: number;
-  value: number;
-};
 type JSONPopCmp = {
   message: string | null;
   result: {
@@ -33,6 +27,25 @@ type JSONPopCmp = {
     data: { label: string; data: PopCmpData[] }[];
   };
 };
+type PopCmpData = {
+  year: number;
+  value: number;
+};
+
+/**
+ * グラフ用
+ */
+type PopCmpGraph = {
+  /** 横軸ラベル（年度）*/
+  xAxisCtg: number[];
+  series: {
+    /** データ名（都道府県名）*/
+    name: string;
+    /** データ（人口数）*/
+    data: number[];
+  }[];
+};
+
 export default function Home() {
   const [pref, setPref] = useState<Pref[]>([]);
   const [checkedPref, setCheckedPref] = useState<Pref[]>([]);
