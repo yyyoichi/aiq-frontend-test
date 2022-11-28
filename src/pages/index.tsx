@@ -185,6 +185,9 @@ export default function Home() {
 }
 function Graph({ dataset }: { dataset: PopCmpGraph }) {
   const options = {
+    title: {
+      text: '人口推移',
+    },
     xAxis: {
       title: {
         text: '年度',
