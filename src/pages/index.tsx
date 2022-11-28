@@ -37,7 +37,7 @@ type PopCmpData = {
  */
 type PopCmpGraph = {
   /** 横軸ラベル（年度）*/
-  xAxisCtg: number[];
+  xAxisCtg: string[];
   series: {
     /** データ名（都道府県名）*/
     name: string;
@@ -82,7 +82,7 @@ export default function Home() {
         return setDataset({ xAxisCtg: [], series: [] });
       }
       // 横軸ラベル
-      const xAxisCtg = res[0]['res']['year']; //
+      const xAxisCtg = res[0]['res']['year'].map((x) => String(x)); //
       // 各レスポンスの実測データの過不足はない想定のためエラーを省く。
       const series = res.map((d) => {
         return { name: d['name'], data: d['res']['value'] };
