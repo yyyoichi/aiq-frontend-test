@@ -1,5 +1,7 @@
 # 都道府県別の総人口推移グラフを表示する SPA(Single Page Application)を構築せよ
 
+合計作業時間: 6h10m
+
 ## 作業時間記録
 
 // prettier-ignore
