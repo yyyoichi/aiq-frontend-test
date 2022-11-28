@@ -14,7 +14,7 @@ type JSONPref = {
 };
 type PopCmpGraph = {
   //横軸ラベル
-  xAxisCtg: string[];
+  xAxisCtg: number[];
   series: PopulationCompo[];
 };
 /**
@@ -40,6 +40,7 @@ export default function Home() {
     xAxisCtg: [],
     series: [],
   });
+  // 起動時に実行
   useEffect(() => {
     // 1．RESAS(地域経済分析システム) APIの「都道府県一覧」APIから取得する
     const url = 'https://opendata.resas-portal.go.jp/api/v1/prefectures';
@@ -47,9 +48,9 @@ export default function Home() {
       .then((res) => setPref(res.result))
       .catch((e) => console.error(e));
   }, []);
+  // チェックされた都道府県の変更時起動
   useEffect(() => {
     // 3. 都道府県にチェックを入れると、RESAS APIから選択された都道府県の「人口構成」を取得する
-
     let isChenged = false;
     // RESAS APIから選択されたそれぞれの都道府県の「人口構成」を取得する
     Promise.all(
@@ -68,12 +69,10 @@ export default function Home() {
         return setDataset({ xAxisCtg: [], series: [] });
       }
       // 横軸ラベル
-      const xAxisCtg = res[0]['res']['year'].map((x) => String(x));
+      const xAxisCtg = res[0]['res']['year']; //
       // 各レスポンスの実測データの過不足はない想定のためエラーを省く。
       const series = res.map((d) => {
-        const name = d['name'];
-        const data = d['res']['value'];
-        return { name, data };
+        return { name: d['name'], data: d['res']['value'] };
       });
       setDataset({ xAxisCtg, series });
     });
