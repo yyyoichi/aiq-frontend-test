@@ -200,6 +200,9 @@ function Graph({ dataset }: { dataset: PopCmpGraph }) {
       },
     },
     series: dataset['series'],
+    accessibility: {
+      enabled: false,
+    },
   };
   return (
     <div>
