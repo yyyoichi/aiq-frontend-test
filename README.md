@@ -8,4 +8,4 @@
 | 1h10m | eslint, prettier 設定 | eslint がなんとなく |
 | 1h00m | API 仕様、グラフ（Heightchart）の確認、大体の方針決定 | |
 | 1h10m | 1，2 実装。fetch 用の関数作成 | |
-| 2h20m | 3 実装。checkbox の状態、都道府県の総人口取得成型 | 都道府県のリストの state は触らないほうが良い |
+| 1h20m | 3 実装。checkbox の状態、都道府県の総人口取得成型 | 都道府県のリストの state は触らないほうが良い |
