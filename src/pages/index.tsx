@@ -160,6 +160,28 @@ export default function Home() {
           })
         }
       </div>
+      <Graph dataset={dataset} />
+    </div>
+  );
+}
+function Graph({ dataset }: { dataset: PopCmpGraph }) {
+  const options = {
+    xAxis: {
+      title: {
+        text: '年度',
+      },
+      categories: dataset['xAxisCtg'],
+    },
+    yAxis: {
+      title: {
+        text: '人口数',
+      },
+    },
+    series: dataset['series'],
+  };
+  return (
+    <div>
+      <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
 }
